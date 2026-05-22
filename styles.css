@@ -1,0 +1,290 @@
+:root {
+    --bg-color: #FFF8F0; 
+    --text-color: #333333;
+    --accent-color: #CDBBA7;
+    --accent-hover: #B5A492;
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Inter', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.back-to-top {
+    display: flex;
+    width: max-content;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-style: italic;
+    font-family: var(--font-serif);
+    text-decoration: none;
+    color: var(--text-color);
+    cursor: pointer;
+    margin: 3rem auto 0 auto; 
+}
+
+.back-to-top:hover {
+    animation: bounceUp 1s infinite;
+}
+
+@keyframes bounceUp {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px); 
+    }
+}
+header {
+    width: 100%;
+    max-width: 1100px;
+    padding: 2rem;
+}
+ main, footer {
+    width: 100%;
+    max-width: 950px;
+    padding: 0 2rem;
+ }
+
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 9rem;
+    border-bottom: 1px solid var(--text-color);
+    padding-bottom: 0.5rem;
+    flex: 1;
+}
+.left-links {
+    justify-content: flex-start; 
+}
+
+.right-links {
+    justify-content: flex-end;  
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    display: inline-block; 
+    
+    transition: transform 0.3s ease; 
+}
+
+.nav-links a:hover {
+    transform: rotate(-4deg); 
+    scale: 1.1;
+}
+
+.logo-name {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 400;
+    text-align: center;
+    padding: 0 2rem;
+}
+.logo-name a {
+    text-decoration: none;     
+    color: var(--text-color);  
+}
+
+.hero {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-text {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    color: #666;
+}
+
+.scroll-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-style: italic;
+    font-family: var(--font-serif);
+    
+    text-decoration: none; 
+    color: var(--text-color); 
+    cursor: pointer;
+}
+
+.scroll-indicator:hover {
+    animation: bounce 1s infinite; 
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0); 
+    }
+    50% {
+        transform: translateY(8px); 
+    }
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    text-align: center;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+}
+
+.about-content {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-image img {
+    width: 300px;
+    height: auto;
+    object-fit: cover;
+}
+
+.about-text {
+    flex: 1;
+    font-size: 0.95rem;
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+}
+
+.btn {
+    display: block;
+    width: max-content;
+    margin: 0 auto;
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--accent-hover);
+}
+
+footer {
+    text-align: center;
+    padding: 4rem 0 2rem 0;
+    font-family: var(--font-serif);
+    border-top: 1px solid rgba(0,0,0,0.1);
+    margin-top: 4rem;
+}
+
+/* --- Projects Page Styling --- */
+
+.page-title {
+    font-family: var(--font-serif);
+    text-align: center;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 2rem;
+    margin-bottom: 4rem; /* Adds breathing room below the title */
+}
+
+.project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem; /* The vertical space between each project */
+}
+
+.project-item {
+    display: flex;
+    gap: 3rem; /* The horizontal space between the image and the text */
+    align-items: center; /* Vertically centers the text with the image */
+}
+
+.project-image {
+    flex-shrink: 0; /* Prevents the image from squishing if text is long */
+}
+
+.project-image img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%; /* This creates the perfect circle */
+    object-fit: cover;  /* Ensures the image fills the circle without stretching */
+    border: 1px solid rgba(0,0,0,0.05); /* Optional: A very faint border to define edges on light images */
+}
+
+.project-info {
+    flex: 1; 
+}
+
+.project-info h3 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 1.3rem;
+    margin-bottom: 0.2rem;
+}
+
+.project-date {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.project-desc {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+/* The Links (Github/Dashboard) */
+.project-link {
+    font-size: 0.85rem;
+    color: var(--text-color);
+}
+
+.project-link a {
+    color: var(--text-color);
+    text-decoration: underline;
+    text-underline-offset: 3px; /* Pushes the underline slightly down for a cleaner look */
+    transition: opacity 0.3s ease;
+}
+
+.project-link a:hover {
+    opacity: 0.7;
+}
