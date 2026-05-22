@@ -17,6 +17,17 @@ html {
     box-sizing: border-box;
 }
 
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Starts slightly lower */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);    /* Ends in its original position */
+    }
+}
+
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
@@ -63,6 +74,11 @@ header {
     width: 100%;
     max-width: 950px;
     padding: 0 2rem;
+
+    opacity: 0; 
+    animation: fadeUp 0.8s ease-out forwards;
+    
+    animation-delay: 0.5s;
  }
 
 .top-nav {
