@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMAP Dashboard | Anna Yao</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <nav class="top-nav">
+            <div class="nav-links left-links">
+                <a href="data_design.html">projects</a>
+                <a href="resume.pdf" target="_blank">resume</a>
+            </div>
+            <h1 class="logo-name">
+                <a href="index.html">Anna Yao</a>
+            </h1>            
+            <div class="nav-links right-links">
+                <a href="https://www.linkedin.com/in/anna-yao-6a4943259/" target="_blank">linkedin</a>
+                <a href="blog">blog</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="project-detail">
+        
+        <h2 class="detail-title">UMAP Embedding Dashboard</h2>
+
+        <div class="carousel">
+            <button class="carousel-btn prev" aria-label="Previous image">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            
+            <div class="carousel-track-container">
+                <ul class="carousel-track">
+                    <li class="carousel-slide current-slide" data-caption="UMAP Scatterplot by Field of Study">
+                        <img src="images/umap.jpg" alt="UMAP Scatterplot by Field of Study">
+                    </li>
+                    <li class="carousel-slide" data-caption="Grant sponsor categorization">
+                        <img src="images/sponsor.jpg" alt="Grant sponsor categorization">
+                    </li>
+                    <li class="carousel-slide" data-caption="Kernel density plot of research output">
+                        <img src="images/kde.jpg" alt="Kernel density plot of research output">
+                    </li>
+                    <li class="carousel-slide" data-caption="Hexbin plot of awarded proposals in embedding space">
+                        <img src="images/hexbin.jpg" alt="Animated UMAP scatterplot of UVA research output over time">
+                    </li>
+                    <li class="carousel-slide" data-caption="Proposal status categories in embedding space">
+                        <img src="images/status.jpg" alt="Proposal status categories in embedding space">
+                    </li>
+                </ul>
+        
+            </div>
+
+            <button class="carousel-btn next" aria-label="Next image">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+
+            <div class="carousel-caption">
+                <p id="caption-text">UMAP Scatterplot by Field of Study</p>
+            </div>
+        </div>
+
+        <div class="detail-content">
+            <p class="detail-date">April 2026</p>
+            
+            <div class="detail-description">
+                <p>Commissioned project for the Research Team at UVA through the Connected Data Hub. Using preprocessed data from my research coworker, I designed and implemented this interactive dashboard that includes a UMAP embedding space of 44,000+ publications and proposals from UVA, an author/title search bar, color categories including field of study, grant status, grant sponsor, and sponsor amount, a kernel density plot of research output distribution, and a hexbin plot showing hit rate of awarded proposals on the embedding space.</p>
+                <p>The dashboard is built with HTML, CSS, and JavaScript, and utilizes the D3.js library for data visualization. It was deployed via GitHub Pages, with data pulled from an AWS S3 bucket.</p>
+                <p>The current website is unavailable and under University protection due to data confidentiality, but the code files are available on my <a href="https://github.com/annayao0602/Embeddings-Scatterplot" target="_blank">GitHub repository</a>.</p>
+            
+                <p> Tools/ Skills: Figma, Python, HTML, CSS, Javascript, D3.js </p>
+            </div>
+            
+        </div>
+
+    <div class="back-link-container">
+        <a href="data_design.html" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M15 18l-6-6 6-6"/>
+            </svg>
+            <span>back to projects</span>
+        </a>
+    </div>
+
+    </main>
+
+    <footer>
+        <p><em>for inquiries: annayao0602@gmail.com</em></p>
+    </footer>
+
+    <script>
+        const track = document.querySelector('.carousel-track');
+        const slides = Array.from(track.children);
+        const nextButton = document.querySelector('.carousel-btn.next');
+        const prevButton = document.querySelector('.carousel-btn.prev');
+        
+        const captionText = document.getElementById('caption-text');
+        
+        let currentIndex = 0;
+
+        const moveToSlide = (index) => {
+            track.style.transform = `translateX(-${index * 100}%)`;
+            currentIndex = index;
+            
+            const activeSlide = slides[index];
+            captionText.textContent = activeSlide.dataset.caption;
+        };
+
+        nextButton.addEventListener('click', e => {
+            if (currentIndex === slides.length - 1) {
+                moveToSlide(0); // Loop back to the beginning
+            } else {
+                moveToSlide(currentIndex + 1);
+            }
+        });
+
+        prevButton.addEventListener('click', e => {
+            if (currentIndex === 0) {
+                moveToSlide(slides.length - 1); // Loop to the end
+            } else {
+                moveToSlide(currentIndex - 1);
+            }
+        });
+    </script>
+</body>
+</html>

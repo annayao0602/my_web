@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intent Model | Anna Yao</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <nav class="top-nav">
+            <div class="nav-links left-links">
+                <a href="data_design.html">projects</a>
+                <a href="resume.pdf" target="_blank">resume</a>
+            </div>
+            <h1 class="logo-name">
+                <a href="index.html">Anna Yao</a>
+            </h1>            
+            <div class="nav-links right-links">
+                <a href="https://www.linkedin.com/in/anna-yao-6a4943259/" target="_blank">linkedin</a>
+                <a href="blog">blog</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="project-detail">
+        
+        <h2 class="detail-title">User Intent Classification Model</h2>
+
+        <div class="carousel">
+            <button class="carousel-btn prev" aria-label="Previous image">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            
+            <div class="carousel-track-container">
+                <ul class="carousel-track">
+                    <li class="carousel-slide current-slide" data-caption="Bar chart showing model performance by concept">
+                        <img src="images/intent.png" alt="Bar chart showing model performance by concept">
+                    </li>
+                </ul>
+            </div>
+
+            <button class="carousel-btn next" aria-label="Next image">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+
+            <div class="carousel-caption">
+                <p id="caption-text">Bar chart showing model performance by concept</p>
+            </div>
+        </div>
+
+        <div class="detail-content">
+            <p class="detail-date">May 2026</p>
+            
+            <div class="detail-description">
+                <p>My final project for Data Science course "Data By Design." After writing this <a href="DS4024_final_project.pdf" target="_blank">paper</a> with another student on anthropomorphic AI and producing several solutions to improve explainability in modern machine learning models, this project acted as an extension of that idea where I attempted to examine how well a model could "understand" user intent. </p>
+                <p>Using a document database, I stored 40,000+ documents which held user prompts and intents that were labeled and categorized for training the model in MongoDB. After using RoBERTaforSequenceClassification for multi-class classification, the F1 scores for each category were calculated. The model did exceptionally well on common intent categories, such as information extraction, but did poorly on rare ones due to class imbalance.</p>
+                <p>Find the complete project <a href="https://github.com/annayao0602/data-by-design-project-2/tree/main" target="_blank">here</a>.</p>
+            
+                <p> Tools/ Skills: Python, MongoDB, Machine Learning </p>
+            </div>
+            
+        </div>
+
+    <div class="back-link-container">
+        <a href="data_design.html" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M15 18l-6-6 6-6"/>
+            </svg>
+            <span>back to projects</span>
+        </a>
+    </div>
+
+    </main>
+
+    <footer>
+        <p><em>for inquiries: annayao0602@gmail.com</em></p>
+    </footer>
+
+    <script>
+        const track = document.querySelector('.carousel-track');
+        const slides = Array.from(track.children);
+        const nextButton = document.querySelector('.carousel-btn.next');
+        const prevButton = document.querySelector('.carousel-btn.prev');
+        
+        // NEW: Select the caption text element
+        const captionText = document.getElementById('caption-text');
+        
+        let currentIndex = 0;
+
+        // Function to move to a specific slide AND update the caption
+        const moveToSlide = (index) => {
+            // Move the images
+            track.style.transform = `translateX(-${index * 100}%)`;
+            currentIndex = index;
+            
+            // NEW: Update the caption text based on the active slide's data attribute
+            const activeSlide = slides[index];
+            captionText.textContent = activeSlide.dataset.caption;
+        };
+
+        // Click Right
+        nextButton.addEventListener('click', e => {
+            if (currentIndex === slides.length - 1) {
+                moveToSlide(0); // Loop back to the beginning
+            } else {
+                moveToSlide(currentIndex + 1);
+            }
+        });
+
+        // Click Left
+        prevButton.addEventListener('click', e => {
+            if (currentIndex === 0) {
+                moveToSlide(slides.length - 1); // Loop to the end
+            } else {
+                moveToSlide(currentIndex - 1);
+            }
+        });
+    </script>
+</body>
+</html>

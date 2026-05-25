@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data is Art | Anna Yao</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <nav class="top-nav">
+            <div class="nav-links left-links">
+                <a href="data_design.html">projects</a>
+                <a href="resume.pdf" target="_blank">resume</a>
+            </div>
+            <h1 class="logo-name">
+                <a href="index.html">Anna Yao</a>
+            </h1>            
+            <div class="nav-links right-links">
+                <a href="https://www.linkedin.com/in/anna-yao-6a4943259/" target="_blank">linkedin</a>
+                <a href="blog">blog</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="project-detail">
+        
+        <h2 class="detail-title">Data is Art Entry</h2>
+
+        <div class="carousel">
+            <button class="carousel-btn prev" aria-label="Previous image">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            
+            <div class="carousel-track-container">
+                <ul class="carousel-track">
+                    <li class="carousel-slide current-slide" data-caption="Rise of Research: Poster Visualization of UVA Research">
+                        <img src="images/dataisart.png" alt="Rise of Research: Poster Visualization of UVA Research">
+                    </li>
+                    <li class="carousel-slide" data-caption="The Stars in Our Sky: Examining R1 Institutions' Research Output">
+                        <img src="images/dataart2.png" alt="The Stars in Our Sky: Examining R1 Institutions' Research Output">
+                    </li>
+                    <li class="carousel-slide" data-caption="Screenshot of animation of UVA research output over time">
+                        <img src="images/animation.jpg" alt="Screenshot of animation of UVA research output over time">
+                    </li>
+                </ul>
+            </div>
+
+            <button class="carousel-btn next" aria-label="Next image">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+
+            <div class="carousel-caption">
+                <p id="caption-text">Rise of Research: Poster Visualization of UVA Research</p>
+            </div>
+        </div>
+
+        <div class="detail-content">
+            <p class="detail-date">April 2026</p>
+            
+            <div class="detail-description">
+                <p>My submission to UVA's data art competition. This project visualized UVA and R1 institutions' research output over time using poster designs and animation <a href="https://annayao0602.github.io/dataArt/" target="_blank">(watch here)</a>.</p>
+                <p>By querying OpenAlex for publication data, I was able to scrape data from 12 different R1 institutes over the span of 10 years, in addition to 15 years of UVA research data. Find the full query and code in my <a href="https://github.com/annayao0602/dataArt" target="_blank">GitHub repository</a>.</p>
+            
+                <p> Tools/ Skills: Figma, Python, HTML, CSS </p>
+            </div>
+            
+        </div>
+
+    <div class="back-link-container">
+        <a href="data_design.html" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M15 18l-6-6 6-6"/>
+            </svg>
+            <span>back to projects</span>
+        </a>
+    </div>
+
+    </main>
+
+    <footer>
+        <p><em>for inquiries: annayao0602@gmail.com</em></p>
+    </footer>
+
+    <script>
+        const track = document.querySelector('.carousel-track');
+        const slides = Array.from(track.children);
+        const nextButton = document.querySelector('.carousel-btn.next');
+        const prevButton = document.querySelector('.carousel-btn.prev');
+        
+        const captionText = document.getElementById('caption-text');
+        
+        let currentIndex = 0;
+
+        const moveToSlide = (index) => {
+            track.style.transform = `translateX(-${index * 100}%)`;
+            currentIndex = index;
+            
+            const activeSlide = slides[index];
+            captionText.textContent = activeSlide.dataset.caption;
+        };
+
+        nextButton.addEventListener('click', e => {
+            if (currentIndex === slides.length - 1) {
+                moveToSlide(0); // Loop back to the beginning
+            } else {
+                moveToSlide(currentIndex + 1);
+            }
+        });
+
+        prevButton.addEventListener('click', e => {
+            if (currentIndex === 0) {
+                moveToSlide(slides.length - 1); // Loop to the end
+            } else {
+                moveToSlide(currentIndex - 1);
+            }
+        });
+    </script>
+</body>
+</html>

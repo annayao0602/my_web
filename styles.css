@@ -238,7 +238,16 @@ footer {
     font-style: italic;
     font-weight: 400;
     font-size: 2rem;
-    margin-bottom: 4rem; /* Adds breathing room below the title */
+    margin-bottom: 1rem; /* Adds breathing room below the title */
+}
+
+.page-subtitle {
+    text-align: center;
+    font-size: 1rem;
+    font-style: italic;
+    font-family: var(--font-serif);
+    color: #666;
+    margin-bottom: 4rem;
 }
 
 .project-list {
@@ -249,20 +258,28 @@ footer {
 
 .project-item {
     display: flex;
-    gap: 3rem; /* The horizontal space between the image and the text */
-    align-items: center; /* Vertically centers the text with the image */
+    gap: 3rem; 
+    align-items: center; 
 }
 
-.project-image {
-    flex-shrink: 0; /* Prevents the image from squishing if text is long */
+.project-image a {
+    display: block;
 }
 
 .project-image img {
     width: 200px;
     height: 200px;
-    border-radius: 50%; /* This creates the perfect circle */
-    object-fit: cover;  /* Ensures the image fills the circle without stretching */
-    border: 1px solid rgba(0,0,0,0.05); /* Optional: A very faint border to define edges on light images */
+    border-radius: 50%; 
+    object-fit: cover;  
+    border: 1px solid rgba(0,0,0,0.05); 
+    
+    transition: transform 0.3s ease; 
+    
+    cursor: pointer; 
+}
+
+.project-image img:hover {
+    transform: scale(1.1); 
 }
 
 .project-info {
@@ -303,4 +320,158 @@ footer {
 
 .project-link a:hover {
     opacity: 0.7;
+}
+
+/* --- Project Detail Page Styling --- */
+
+.project-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detail-title {
+    font-family: var(--font-serif);
+    text-align: center;
+    font-weight: 400;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+/* --- Image Gallery (Carousel) --- */
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 800px; /* Limits how wide the gallery gets */
+    height: 500px;    /* Fixed height to keep layout stable */
+    margin-bottom: 3rem;
+}
+
+.carousel-track-container {
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* Hides the images that are off-screen */
+    border-radius: 8px; /* Optional: Slight curve to the image corners */
+}
+
+.carousel-track {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    height: 100%;
+    transition: transform 0.4s ease-in-out; /* The smooth sliding animation */
+}
+
+.carousel-slide {
+    min-width: 100%; /* Forces each image to take up exactly 100% of the container */
+    height: 100%;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+}
+
+/* Gallery Navigation Arrows */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(250, 248, 242, 0.8); /* Your warm background, slightly transparent */
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    transition: background 0.2s ease, transform 0.2s ease;
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.1); /* Slight pop when hovered */
+}
+
+.carousel-btn.prev {
+    left: -20px; /* Hangs slightly outside the image */
+}
+
+.carousel-btn.next {
+    right: -20px;
+}
+
+/* --- Detail Text Styling --- */
+.detail-content {
+    max-width: 650px; /* Keeps line lengths comfortable for reading */
+    width: 100%;
+}
+
+.detail-date {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 2rem;
+    font-style: italic;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding-bottom: 0.5rem;
+}
+
+.detail-description {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+}
+
+.detail-description p {
+    margin-bottom: 1.5rem;
+}
+
+/* --- Back to Projects Button --- */
+
+.back-link-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    max-width: 1400px; /* Matches the width you set for your header earlier */
+    margin: auto auto; /* Centers the container */
+    padding-top: 4rem;
+    padding-bottom: 0rem;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-style: italic;
+    font-family: var(--font-serif);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    width: max-content; /* Keeps the hover area tight around the text */
+}
+
+.back-link:hover {
+    opacity: 0.7;
+    transform: translateX(-5px); 
+}
+
+.carousel-caption {
+    text-align: center;
+    margin-top: 1rem;
+    padding: 0 2rem;
+    min-height: 2.5rem; /* Prevents the page from jumping if a caption spans two lines */
+}
+
+#caption-text {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #666;
+    transition: opacity 0.3s ease; /* Optional smooth fade */
 }

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laser Cut Wood Postcard | Anna Yao</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <nav class="top-nav">
+            <div class="nav-links left-links">
+                <a href="data_design.html">projects</a>
+                <a href="resume.pdf" target="_blank">resume</a>
+            </div>
+            <h1 class="logo-name">
+                <a href="index.html">Anna Yao</a>
+            </h1>            
+            <div class="nav-links right-links">
+                <a href="https://www.linkedin.com/in/anna-yao-6a4943259/" target="_blank">linkedin</a>
+                <a href="blog">blog</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="project-detail">
+        
+        <h2 class="detail-title">Laser Cut Wood Postcard</h2>
+
+        <div class="carousel">
+            <button class="carousel-btn prev" aria-label="Previous image">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            
+            <div class="carousel-track-container">
+                <ul class="carousel-track">
+                    <li class="carousel-slide current-slide" data-caption="Finished product close up">
+                        <img src="images/laser_cut.jpg" alt="Laser cut postcard front view">
+                    </li>
+                    <li class="carousel-slide" data-caption="Multiple finished products">
+                        <img src="images/IMG_2490.JPG" alt="Laser cut postcard multiple">
+                    </li>
+                    <li class="carousel-slide" data-caption="Figma design">
+                        <img src="images/figma.jpg" alt="Figma design">
+                    </li>
+                    <li class="carousel-slide" data-caption="Mock up">
+                        <img src="images/IMG_2193.jpg" alt="Original design">
+                </ul>
+            </div>
+
+            <button class="carousel-btn next" aria-label="Next image">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+
+            <div class="carousel-caption">
+                <p id="caption-text">Finished product close up</p>
+            </div>
+        </div>
+
+        <div class="detail-content">
+            <p class="detail-date">May 2026</p>
+            
+            <div class="detail-description">
+                <p>This project is a 3D rendition of my previously designed research sunburst chart, created by laser cutting wood and task board. It was made as a gift for the Vice President of Research at UVA after the initial presentation of my interactive dashboard on UVA research publication insights <a href="umap_dashboard.html">(see more)</a>.</p>
+                <p>The laser cutting was done at UVA's MakerSpace Scholars Lab, and all prior design work was done on Figma and Adobe Illustrator.</p>
+            
+                <p> Tools: Figma, Adobe Illustrator, Laser Cutter, Wood, Task Board</p>
+            </div>
+            
+        </div>
+
+    <div class="back-link-container">
+        <a href="data_design.html" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M15 18l-6-6 6-6"/>
+            </svg>
+            <span>back to projects</span>
+        </a>
+    </div>
+
+    </main>
+
+    <footer>
+        <p><em>for inquiries: annayao0602@gmail.com</em></p>
+    </footer>
+
+    <script>
+        const track = document.querySelector('.carousel-track');
+        const slides = Array.from(track.children);
+        const nextButton = document.querySelector('.carousel-btn.next');
+        const prevButton = document.querySelector('.carousel-btn.prev');
+        
+        // NEW: Select the caption text element
+        const captionText = document.getElementById('caption-text');
+        
+        let currentIndex = 0;
+
+        // Function to move to a specific slide AND update the caption
+        const moveToSlide = (index) => {
+            // Move the images
+            track.style.transform = `translateX(-${index * 100}%)`;
+            currentIndex = index;
+            
+            // NEW: Update the caption text based on the active slide's data attribute
+            const activeSlide = slides[index];
+            captionText.textContent = activeSlide.dataset.caption;
+        };
+
+        // Click Right
+        nextButton.addEventListener('click', e => {
+            if (currentIndex === slides.length - 1) {
+                moveToSlide(0); // Loop back to the beginning
+            } else {
+                moveToSlide(currentIndex + 1);
+            }
+        });
+
+        // Click Left
+        prevButton.addEventListener('click', e => {
+            if (currentIndex === 0) {
+                moveToSlide(slides.length - 1); // Loop to the end
+            } else {
+                moveToSlide(currentIndex - 1);
+            }
+        });
+    </script>
+</body>
+</html>
